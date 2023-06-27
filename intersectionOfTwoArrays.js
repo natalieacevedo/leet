@@ -9,3 +9,21 @@ var intersection = function (nums1, nums2) {
 };
 
 console.log(intersection([1, 2, 2, 1], [2, 2]));
+
+//F:
+var intersect = function (nums1, nums2) {
+  const intersection = [];
+  const used = new Map();
+  for (let i = 0; i < nums1.length; i++) {
+    for (let j = 0; j < nums2.length; j++) {
+      const n1 = nums1[i];
+      const n2 = nums2[j];
+      if (n1 === n2 && !used.get(j)) {
+        used.set(j, true);
+        intersection.push(n1);
+        break;
+      }
+    }
+  }
+  return intersection;
+};
