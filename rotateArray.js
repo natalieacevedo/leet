@@ -1,20 +1,23 @@
 // Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 function rotate(arr, k) {
-  if (k > arr.length) {
-    k = k % arr.length;
-    console.log(k);
-    for (let i = 0; i < k; i++) {
-      arr.splice(i, 0, arr[i]);
-    }
-  }
+  // k = arr.length % k;
 
   const len = arr.length;
   const sliced = arr.slice(len - k);
-
-  for (let i = 0; i < sliced.length; i++) {
-    arr.splice(i, 0, sliced[i]);
-    arr.pop();
+  if (arr.length < k) {
+    k = k % arr.length;
+    for (let i = 0; i < k; i++) {
+      arr.splice(i, 0, sliced[i]);
+      arr.pop();
+    }
+  } else {
+    for (let i = 0; i < sliced.length; i++) {
+      arr.splice(i, 0, sliced[i]);
+      arr.pop();
+    }
   }
+
+  return arr;
 }
 
-console.log(rotate([1, 2, 5, 8], 1));
+console.log(rotate([1, 2], 5));
