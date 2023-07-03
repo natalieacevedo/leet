@@ -13,5 +13,23 @@ function reverseString(s) {
   return s;
 }
 
-console.log(reverseString(["h", "e", "l", "l", "o"]));
+function numberOfCharacters(str) {
+  const allCharacters = ["<", ">", "v", "^"];
+  function numberOfEach(arr, item) {
+    return arr.reduce((acc, el) => (el === item ? (acc += 1) : acc), 0);
+  }
+
+  const arrWithChar = str.split("");
+
+  const numb = () => allCharacters.map((el) => numberOfEach(arrWithChar, el));
+  const arrFinal = numb();
+  arrFinal.pop();
+  console.log(arrFinal);
+
+  return arrFinal.reduce((el, acc) => acc + el, 0);
+}
+
+console.log(numberOfCharacters("<<>>>^^^<^><>^vvvvv^"));
+
+//console.log(reverseString(["h", "e", "l", "l", "o"]));
 //["o", "l", "l", "l", "o"];
